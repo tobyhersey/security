@@ -3,6 +3,8 @@ import argparse
 import requests
 import random 
 from collections import OrderedDict
+from random import getrandbits
+from ipaddress import IPv4Address
 
 # This data was created by using the curl method explained above
 headers_list = [
@@ -64,8 +66,13 @@ for headers in headers_list:
         h[header]=value
     ordered_headers_list.append(h)
 
+#Generate random ipv4 address 
+bits = getrandbits(32) 
+addr = IPv4Address(bits) # instances an IPv4Address object from those bits
+ipv4address = str(addr)
+
 data = {
-    "ip": "6.6.6.6",
+    "ip": ipv4address,
     "username": "ayina",
     "password": "hyperpigmentation",
     "ua": headers['User-Agent']  ##Need to fix url encoding occuring
