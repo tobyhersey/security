@@ -5,6 +5,8 @@ import random
 from collections import OrderedDict
 from random import getrandbits
 from ipaddress import IPv4Address
+import random
+import string
 
 # This data was created by using the curl method explained above
 headers_list = [
@@ -71,23 +73,26 @@ bits = getrandbits(32)
 addr = IPv4Address(bits) # instances an IPv4Address object from those bits
 ipv4address = str(addr)
 
-data = {
-    "ip": ipv4address,
-    "username": "ayina",
-    "password": "hyperpigmentation",
-    "ua": headers['User-Agent']  ##Need to fix url encoding occuring
-   
-}
+
+
+
 # print(sys.argv[1:])
 parser = argparse.ArgumentParser("simple_example")
 parser.add_argument("server", help="Server address to sent data", type=str)
 args = parser.parse_args()
 #print(args.server)
 
-
+#Url with arg
 url = args.server
 
+
 for i in range(1,2):
+    data = {
+    "ip": ipv4address,
+    "username": random.randint(1000000000,9999999999),
+    "password":  ''.join(random.choice(string.ascii_lowercase + string.ascii_uppercase + string.digits) for _ in range(14)),
+    "ua": headers['User-Agent']  ##Need to fix url encoding occuring
+    }
     #Pick a random browser headers
     headers = random.choice(headers_list)
     #Create a request session
