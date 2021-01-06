@@ -61,18 +61,32 @@ for headers in headers_list:
     for header,value in headers.items():
         h[header]=value
     ordered_headers_list.append(h)
-    
-    
-url = 'https://httpbin.org/headers'
+
+data = {
+    'ip': '6.6.6.6'
+}
+#  'json': {'ip': '6.6.6.6'}
+# data = {
+#     "cardno": "6248889874650987",
+#     "systemIdentify": "s08",
+#     "sourceChannel": 12
+# }
+# resp = requests.post(url, json=data)
+# ip: 95.186.192.224
+# ua: Mozilla%2F5.0+(X11%3B+Ubuntu%3B+Linux+x86_64%3B+rv%3A84.0)+Gecko%2F20100101+Firefox%2F84.0
+# username: ayina
+# password: hyperpigmentation
+
+url = 'https://hookb.in/VGdRDB0wV0IE22bwzX8b'
 
 for i in range(1,4):
     #Pick a random browser headers
     headers = random.choice(headers_list)
     #Create a request session
-    r = requests.Session()
-    r.headers = headers
-    
-    response = r.get(url)
+    s = requests.Session()
+    s.headers = headers
+    r = s.post(url, data=data)
+    # response = r.get(url)
     print("Request #%d\nUser-Agent Sent:%s\n\nHeaders Recevied by HTTPBin:"%(i,headers['User-Agent']))
-    print(response.json())
+    # print(response.json())
     print("-------------------")
