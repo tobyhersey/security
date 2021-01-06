@@ -63,23 +63,17 @@ for headers in headers_list:
     ordered_headers_list.append(h)
 
 data = {
-    'ip': '6.6.6.6'
+    "ip": "6.6.6.6",
+    "username": "ayina",
+    "password": "hyperpigmentation",
+    "ua": headers['User-Agent']  ##Need to fix url encoding occuring
+   
 }
-#  'json': {'ip': '6.6.6.6'}
-# data = {
-#     "cardno": "6248889874650987",
-#     "systemIdentify": "s08",
-#     "sourceChannel": 12
-# }
-# resp = requests.post(url, json=data)
-# ip: 95.186.192.224
-# ua: Mozilla%2F5.0+(X11%3B+Ubuntu%3B+Linux+x86_64%3B+rv%3A84.0)+Gecko%2F20100101+Firefox%2F84.0
-# username: ayina
-# password: hyperpigmentation
+# "ua": random.choice(headers_list)
 
-url = 'https://hookb.in/VGdRDB0wV0IE22bwzX8b'
+url = 'https://hookb.in/G9ZdeJXg6OCWGGeQqdYy'
 
-for i in range(1,4):
+for i in range(1,2):
     #Pick a random browser headers
     headers = random.choice(headers_list)
     #Create a request session
