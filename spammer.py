@@ -1,3 +1,5 @@
+import sys
+import argparse
 import requests
 import random 
 from collections import OrderedDict
@@ -69,9 +71,14 @@ data = {
     "ua": headers['User-Agent']  ##Need to fix url encoding occuring
    
 }
-# "ua": random.choice(headers_list)
+# print(sys.argv[1:])
+parser = argparse.ArgumentParser("simple_example")
+parser.add_argument("server", help="Server address to sent data", type=str)
+args = parser.parse_args()
+#print(args.server)
 
-url = 'https://hookb.in/G9ZdeJXg6OCWGGeQqdYy'
+
+url = args.server
 
 for i in range(1,2):
     #Pick a random browser headers
