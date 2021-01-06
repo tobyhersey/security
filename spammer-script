@@ -1,0 +1,11 @@
+for i in `seq 1 200000`; do curl \
+'REMOVED' \
+-H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0' \
+-H 'Accept: */*' -H 'Accept-Language: en-GB,en;q=0.5' --compressed \
+-H 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8' \
+-H 'X-Requested-With: XMLHttpRequest' \
+-H 'Origin: REMOVED' \
+-H 'Connection: keep-alive' \
+-H 'Referer: REMOVED \
+-H 'TE: Trailers' --data-raw "ip=$((RANDOM % 256)).$((RANDOM % 256)).$((RANDOM % 256)).$((RANDOM % 256))&ua=Mozilla%2F5.0+(X11%3B+Ubuntu%3B+Linux+x86_64%3B+rv%3A84.0)+Gecko%2F20100101+Firefox%2F84.0&username=$(shuf -n 1 list.txt)&password=$(shuf -n 1 list.txt)"\
+; done
